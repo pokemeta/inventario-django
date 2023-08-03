@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Error{% endblock title %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-4">
+            <div class=" mt-5">
+                <div class="row">
+                    <div class="col text-center">
+                        <i class="fa-solid fa-user-lock fa-2xl text-danger"></i>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col text-center">
+                        <h6 class="card-title text-danger">Error no cuentas con los permisos</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

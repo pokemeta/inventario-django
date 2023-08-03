@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo bien{% endblock title %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form action="" method="POST" class="card card-body mt-5">
+                {% if form_action == 'create' %}
+                    <h1 class="card-title text-center"> <i class="fa-solid fa-box-open"></i> Nuevo resguardo</h1>
+                {% else %}
+                    <h1 class="card-title text-center"><i class="fa-solid fa-box"></i> Actualizar resguardo</h1>
+                {% endif %}
+                {% csrf_token %}
+                {{error}}
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label for="n_oficialia"># Oficialia:</label>
+                            {{form.n_oficialia}}
+                        </div>
+                        <div class="col">
+                            <label for="n_serie"># serie:</label>
+                            {{form.n_serie}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="descripcion">Descripción:</label>
+                            {{form.descripcion}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="marca">Marca:</label>
+                            {{form.marca}}
+                        </div>
+                        <div class="col">
+                            <label for="modelo_i">Modelo:</label>
+                            {{form.modelo_i}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="n_factura">Factura:</label>
+                            {{form.n_factura}}
+                        </div>
+                        <div class="col">
+                            <label for="f_factura">Factura fecha:</label>
+                            {{form.f_factura}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="orden_c">Orden de compra:</label>
+                            {{form.orden_c}}
+                        </div>
+                        <div class="col">
+                            <label for="proveedor_c">Proveedor:</label>
+                            {{form.proveedor_c}}
+                        </div>
+                        <div class="col">
+                            <label for="centro_c">Centro de c:</label>
+                            {{form.centro_c}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="orden_c">Funcionario:</label>
+                            {{form.funcionario}}
+                        </div>
+                        <div class="col">
+                            <label for="lugar">Lugar:</label>
+                            {{form.lugar}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="comentarios">Observaciones</label>
+                            {{form.comentarios}}
+                        </div>
+                    </div>
+
+
+
+                {% if form_action == 'create' %}
+                <div>
+                    <button class="btn btn-success mt-2">Crear <i class="fa-solid fa-square-plus"></i></button>
+                </div>
+                {% else %}
+                <div>
+                    <button class="btn btn-primary mt-2">Actualizar <i class="fa-solid fa-file-export"></i></button>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Detalle{% endblock title %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-3">
+            <h1 class="text-center">Detalle de {{item.n_oficialia}}</h1>
+            <form class="form-control card card-body mt-5">
+                <div class="mb-3">
+                    <label for="n_oficialia" class="form-label">Número de Oficialia</label>
+                    <input type="text" class="form-control" value="{{item.n_oficialia}}" disabled>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="descripcion" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" value="{{item.descripcion}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="n_serie" class="form-label">Número de serie</label>
+                        <input type="text" class="form-control" value="{{item.n_serie}}" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="marca" class="form-label">Marca</label>
+                        <input type="text" class="form-control" value="{{item.marca}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="modelo_i" class="form-label">Modelo</label>
+                        <input type="text" class="form-control" value="{{item.modelo_i}}" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="f_factura" class="form-label">Fecha de factura</label>
+                        <input type="text" class="form-control" value="{{item.f_factura}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="n_factura" class="form-label">Número de factura</label>
+                        <input type="text" class="form-control" value="{{item.n_factura}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="orden_c" class="form-label">Orden de compra</label>
+                        <input type="text" class="form-control" value="{{item.orden_c}}" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="proveedor_c" class="form-label">Proveedor</label>
+                        <input type="text" class="form-control" value="{{item.proveedor_c}}" disabled>
+                    </div>
+                    <div class="col">
+                        <label for="centro_c" class="form-label">CentroCosto</label>
+                        <input type="text" class="form-control" value="{{item.centro_c}}" disabled>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="comentarios" class="form-label">Comentarios</label>
+                    <textarea class="form-control" id="comentarios" cols="30" rows="5" value="{{item.comentarios}}" disabled></textarea>
+                </div>
+                <div class="row">
+                    
+                    <div class="col">
+                        <label for="lugar" class="form-label">Lugar</label>
+                        <input type="text" class="form-control" value="{{item.lugar}}" disabled>
+                        
+                        
+                        
+                    </div>
+                    <div class="col">
+                        <label for="funcionario" class="form-label">Funcionario</label>
+                        <input type="text" class="form-control" placeholder="{{item.funcionario}}" disabled>
+                    </div>
+                </div>
+            </form>
+            <form action="{% url 'updated_location' item.id %}" class="form-control">
+                <button class="btn btn-success">Actualizar Ubicación</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Resguardos{% endblock title %}
+
+{% block content %}
+
+
+<main class="container">
+    <div class="row">
+        <h1 class="text-center ">Resguardos</h1>
+        <div>
+          <span><a href="{% url 'create_item' %}"><i class="fa-solid fa-circle-plus fa-2xl text-success"></i></a></span>
+        </div>
+        <form method="GET">
+          <div class="row">
+            <div class="col">
+              <label for="n_oficialia">Folio:</label>
+              {{item_filter.form.n_oficialia}}
+            </div>
+            <div class="col">
+              <label for="descripcion">Nombre:</label>
+              {{item_filter.form.descripcion}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="modelo_i">Modelo::</label>
+              {{item_filter.form.modelo_i}}
+            </div>
+            <div class="col">
+              <label for="lugar">Lugar:</label>
+              {{item_filter.form.lugar}}
+            </div>
+            <div class="col">
+              <label for="funcionario">Funcionario::</label>
+              {{item_filter.form.funcionario}}
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+        <table class="table table-striped mt-5">
+            <thead class="table-dark">
+                <tr>
+                  <th scope="col"># Folio</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Ubicación</th>
+                  <th scope="col">Funcionario</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in items  %}
+                <tr>
+                    <td> <a href="{% url 'item_detail' item.id %}">{{ item.n_oficialia }}</a> </td>
+                    <td>{{ item.descripcion }}</td>
+                    <td>{{ item.modelo_i }}</td>
+                    <td>{{ item.lugar }}</td>
+                    <td>{{ item.funcionario }}</td>
+                    <td> <a href="{% url 'updated_item' item.id %}"><i class="fa-regular fa-pen-to-square text-primary"></i></a> </td>
+                  </tr>
+            
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+    <div>
+      <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+              {% if items.has_previous %}
+                  <li class="page-item"><a href="?page=1" class="page-link">&laquo;Primero</a></li>
+                  <li class="page-item"><a href="?page={{ items.previous_page_number }}" class="page-link"> Anterior</a></li>
+              {% endif %}
+              {% for i in nums %}
+                  <li class="page-item"><a class="page-link" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+              {%endfor%}
+              {% if items.has_next  %}
+                  <li class="page-item"><a href="?page={{items.next_page_number}}" class="page-link">Siguiente</a></li>
+                  <li class="page-item"><a href="?page={{items.paginator.num_pages}}" class="page-link"> Ultimo &raquo;</a></li>
+              {% endif %}
+          </ul>
+        </nav>
+      </div>
+</main>
+    
+
+
+
+        
+
+{% endblock content %}

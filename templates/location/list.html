@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Lugares{% endblock title %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <h1 class="text-center ">Lugares</h1>
+        <div>
+            <a href="{% url 'create_location' %}"><i class="fa-solid fa-circle-plus fa-2xl text-success"></i></a>
+        </div>
+        <form method="GET">
+          <div class="row">
+            <div class="col">
+              <label for="name">Nombre:</label>
+              {{location_filter.form.name}}
+            </div>
+            <div class="col">
+              <label for="description">Descripción:</label>
+              {{location_filter.form.description}}
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+        <table class="table table-striped mt-5">
+            <thead class="table-dark">
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for location in locations  %}
+                <tr>
+                    <td>{{ location.name }}</td>
+                    <td>{{ location.description }}</td>
+                    <td> <a href="{% url 'update_location' location.id %}"><i class="fa-regular fa-pen-to-square text-primary"></i></a> </td>
+                    
+                  </tr>
+            
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+    <div>
+      <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+              {% if locations.has_previous %}
+                  <li class="page-item"><a href="?page=1" class="page-link">&laquo;Primero</a></li>
+                  <li class="page-item"><a href="?page={{ locations.previous_page_number }}" class="page-link"> Anterior</a></li>
+              {% endif %}
+              {% for i in nums %}
+                  <li class="page-item"><a class="page-link" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+              {%endfor%}
+              {% if locations.has_next  %}
+                  <li class="page-item"><a href="?page={{locations.next_page_number}}" class="page-link">Siguiente</a></li>
+                  <li class="page-item"><a href="?page={{locations.paginator.num_pages}}" class="page-link"> Ultimo &raquo;</a></li>
+              {% endif %}
+          </ul>
+        </nav>
+      </div>
+</main>
+    
+{% endblock content %}

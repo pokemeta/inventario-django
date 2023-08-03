@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Nuevo Lugar{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-5 offset-md-4">
+                <form  class="form-control card card-body mt-5" method="POST">
+                    {% csrf_token %}
+                    {{error}}
+                    <h1 class="card-title text-center"><i class="fa-solid fa-map-location-dot"></i> Actualizar ubicación</h1>
+                    <div class="row">
+                        <div class="col">
+                            <p><h6>Lugar anterior:</h6> {{item.lugar}}</p>
+                        </div>
+                    </div>
+                    <label for="lugar" class="form-label">Lugar a actualizar</label>
+                            {{form.lugar}}
+                    <button class="btn btn-primary mt-2">Cambiar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
